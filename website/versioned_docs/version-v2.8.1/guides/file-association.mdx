@@ -46,6 +46,10 @@ For example:
 ### macOS
 When you open file (or files) with your app, the system will launch your app and call the `OnFileOpen` function in your Wails app. Example:
 ```go title="main.go"
+import (
+  "github.com/wailsapp/wails/v2/pkg/options/mac"
+)
+
 func main() {
 	// Create application with options
 	err := wails.Run(&options.App{
@@ -57,7 +61,7 @@ func main() {
 		},
 		BackgroundColour: &options.RGBA{R: 27, G: 38, B: 54, A: 1},
 		Mac: &mac.Options{
-			OnFileOpen: func(filePaths []string) { println(filestring) },
+			OnFileOpen: func(filePath string) { println(filePath) },
 		},
 		Bind: []interface{}{
 			app,
